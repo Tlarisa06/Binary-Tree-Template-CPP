@@ -1,0 +1,3 @@
+C:/Users/tifle/CLionProjects/lab6SD/cmake-build-debug/CMakeFiles/lab6SD.dir
+C:/Users/tifle/CLionProjects/lab6SD/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/tifle/CLionProjects/lab6SD/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -8,16 +8,28 @@ This C++ project provides a generic template implementation of a **Binary Tree (
 
 * **Generic Implementation**: Uses C++ templates to support any data type (`TElem`), allowing for trees of strings, integers, or custom structures.
 * **Vector-Based Storage**: Efficiently manages tree nodes using `std::vector` for both elements and validity flags.
-* **Index-Based Mapping**: Implements parent-child relationships using array indices ($2i$ for left, $2i+1$ for right).
 * **Tree Construction**: Supports creating leaf nodes and building complex trees by combining root elements with subtrees.
 * **Subtree Management**: Includes functionality to dynamically add or retrieve left and right subtrees.
 * **Tree Traversal**: Features a `visitTree` method that applies a function to every valid node in the tree.
 
 ---
 
+## Node Mapping Logic
+
+The binary tree is implemented using an array-based representation within a `std::vector`. Instead of using pointers, parent-child relationships are calculated through indices:
+
+
+
+| Relationship | Formula | Code Implementation |
+| :--- | :--- | :--- |
+| **Root** | Index 1 | `rad = 1;` |
+| **Left Child** | $i \times 2$ | `elems[2 * i] = st.elems[i];` |
+| **Right Child** | $(i \times 2) + 1$ | `elems[2 * i + 1] = dr.elems[i];` |
+| **Parent Node** | $\lfloor k/2 \rfloor$ | Internal logic for position tracking |
+
+---
+
 ## Architecture
-
-
 
 | Component | Responsibility |
 | :--- | :--- |
@@ -43,13 +55,6 @@ Organizes `masina` (car) structures containing IDs, years, and prices into a bin
 
 ## Technical Specifications
 
-### Node Mapping Logic
-The tree uses a mathematical index-based approach for node placement within the internal vector:
-* **Root**: Position 1.
-* **Left Child**: $2 \times \text{parent\_index}$.
-* **Right Child**: $2 \times \text{parent\_index} + 1$.
-
-### Memory and Safety
 * **Dynamic Resizing**: Internal vectors automatically resize when adding subtrees that exceed current capacity.
 * **Validity Flags**: A separate `std::vector<bool> valid` tracks which indices contain active tree elements to prevent invalid access.
 * **Exception Handling**: The `element()` method throws a `std::runtime_error` if the tree is empty.
